@@ -1,0 +1,11 @@
+.deps/
+backend/smart_contracts/artifacts/
+
+node_modules/
+package-lock.json
+*.zip
+
+backend/Scalability_ev/files/
+
+.vscode
+.DS_store
