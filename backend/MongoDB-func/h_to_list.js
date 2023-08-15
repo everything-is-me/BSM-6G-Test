@@ -38,7 +38,7 @@ exports = async function ({ query, headers, body }, response) {
     if (stateBool === true) {
       if (!bandToUpdate.listed && bandToUpdate.purchased) {
         return {
-          message: "Band cannot be listed because it is purchasedased.",
+          message: "Band cannot be listed because it is purchased.",
         };
       } else if (bandToUpdate.listed && bandToUpdate.purchased) {
         return { message: "Error, band cannot be listed and purchased true." };
