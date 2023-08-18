@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-//Contract with link 0x0A66ADe12b9349B0238e769512E54a9f025b0b72 
+//Contract with link 0xcd8C1Fd71a718c7E4F2c1Cb42C4Dab641B98A56A
 
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 import "@chainlink/contracts/src/v0.8/ConfirmedOwner.sol";
@@ -65,12 +65,16 @@ contract CLAPIConsumer is ChainlinkClient, ConfirmedOwner {
     }
 
     function setAuthorizedPUs(address[] calldata addresses) public onlyOwner {
-        authorizedListers = addresses;
-        authorizedPurchasers = addresses;
+        for (uint256 i = 0; i < addresses.length; i++) {
+            authorizedListers.push(addresses[i]);
+            authorizedPurchasers.push(addresses[i]);
+        }   
     }
 
     function setAuthorizedSUs(address[] calldata addresses) public onlyOwner {
-        authorizedPurchasers = addresses;
+        for (uint256 i = 0; i < addresses.length; i++) {
+            authorizedPurchasers.push(addresses[i]);
+        }
     }
 
     function removeAuthorizedPUs(address[] calldata addresses) public onlyOwner {
