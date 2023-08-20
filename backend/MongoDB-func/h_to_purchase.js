@@ -1,9 +1,19 @@
+//HTTPS Endpoint function to purchase
+// This function is the endpoint's request handler.
 exports = async function ({ query, headers, body }, response) {
-  const { id, state } = query;
+  // Data can be extracted from the request as follows:
 
-  // Check if "state" is provided and is either '1' or '0'.
+  // Query params, e.g. '?arg1=hello&arg2=world' => {arg1: "hello", arg2: "world"}
+  const { id, state, address } = query;
+
+  // Check if "state" is provided and is either 1 or 0
   if (state && parseInt(state) !== 1 && parseInt(state) !== 0) {
     return { message: "state should be either '1' or '0'." };
+  }
+
+  // Check if address is a valid address
+  if (typeof address !== "string") {
+    return { message: "no valid address" };
   }
 
   // Ensure "state" is a boolean (true or false).
@@ -27,12 +37,14 @@ exports = async function ({ query, headers, body }, response) {
 
   let bands = await doc.aggregate(aggregationPipeline).toArray();
 
+  // Get band availability
   if (bands[0].bands[0].regulatorsPermission === false) {
     return {
       message: "Band not allowed to list and / or purchased by Regulators",
     };
   }
 
+  // Run purchasing scenearios
   if (bands.length > 0 && bands[0].bands.length > 0) {
     const bandToUpdate = bands[0].bands[0];
     if (stateBool === true) {
@@ -47,6 +59,8 @@ exports = async function ({ query, headers, body }, response) {
             $set: {
               "bands.$.listed": false,
               "bands.$.purchased": true,
+              "bands.$.lastPurchasedTime": Date.now(),
+              "bands.$.lastPurchasedAddress": address,
             },
           }
         );
@@ -72,7 +86,13 @@ exports = async function ({ query, headers, body }, response) {
       } else if (!bandToUpdate.listed && bandToUpdate.purchased) {
         const result = await doc.updateOne(
           { "bands.id": parseInt(id) },
-          { $set: { "bands.$.purchased": false } }
+          {
+            $set: {
+              "bands.$.purchased": false,
+              "bands.$.lastPurchasedTime": Date.now(),
+              "bands.$.lastPurchasedAddress": address,
+            },
+          }
         );
         if (result.modifiedCount === 1) {
           return { message: "Band purchased new state: " + false };

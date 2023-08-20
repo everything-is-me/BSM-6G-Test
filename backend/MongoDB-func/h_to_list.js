@@ -1,9 +1,19 @@
+//HTTPS Endpoint function to list
+// This function is the endpoint's request handler.
 exports = async function ({ query, headers, body }, response) {
-  const { id, state } = query;
+  // Data can be extracted from the request as follows:
 
-  // Check if "state" is provided and is either '1' or '0'.
+  // Query params, e.g. '?arg1=hello&arg2=world' => {arg1: "hello", arg2: "world"}
+  const { id, state, address } = query;
+
+  // Check if "state" is provided and is either 1 or 0
   if (state && parseInt(state) !== 1 && parseInt(state) !== 0) {
     return { message: "state should be either '1' or '0'." };
+  }
+
+  // Check if address is a valid address
+  if (typeof address !== "string") {
+    return { message: "no valid address" };
   }
 
   // Ensure "state" is a boolean (true or false).
@@ -27,25 +37,33 @@ exports = async function ({ query, headers, body }, response) {
 
   let bands = await doc.aggregate(aggregationPipeline).toArray();
 
+  // Get band availability
   if (bands[0].bands[0].regulatorsPermission === false) {
     return {
       message: "Band not allowed to list and / or purchased by Regulators",
     };
   }
 
+  // Run listing scenearios
   if (bands.length > 0 && bands[0].bands.length > 0) {
     const bandToUpdate = bands[0].bands[0];
     if (stateBool === true) {
       if (!bandToUpdate.listed && bandToUpdate.purchased) {
         return {
-          message: "Band cannot be listed because it is purchased.",
+          message: "Band cannot be listed because it is purchasedased.",
         };
       } else if (bandToUpdate.listed && bandToUpdate.purchased) {
         return { message: "Error, band cannot be listed and purchased true." };
       } else if (!bandToUpdate.listed && !bandToUpdate.purchased) {
         const result = await doc.updateOne(
           { "bands.id": parseInt(id) },
-          { $set: { "bands.$.listed": true } }
+          {
+            $set: {
+              "bands.$.listed": true,
+              "bands.$.lastListedTime": Date.now(),
+              "bands.$.lastListedAddress": address,
+            },
+          }
         );
         if (result.modifiedCount === 1) {
           return { message: "Band listed new state: " + true };
@@ -62,7 +80,13 @@ exports = async function ({ query, headers, body }, response) {
         // Update band listed state to "stateBool" and return success message.
         const result = await doc.updateOne(
           { "bands.id": parseInt(id) },
-          { $set: { "bands.$.listed": false } }
+          {
+            $set: {
+              "bands.$.listed": false,
+              "bands.$.lastListedTime": Date.now(),
+              "bands.$.lastListedAddress": address,
+            },
+          }
         );
         if (result.modifiedCount === 1) {
           return { message: "Band listed new state: " + false };

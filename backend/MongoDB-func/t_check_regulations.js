@@ -1,3 +1,5 @@
+//Trigger function to change band.regulatorsPermission
+
 exports = async function (changeEvent) {
   const docId = changeEvent.documentKey._id;
 
@@ -19,9 +21,11 @@ exports = async function (changeEvent) {
     if (regulatorsDoc && fatEdited2Doc) {
       const rules = regulatorsDoc.rules;
 
+      // Find rules
       const catRule = rules.find((rule) => rule.id === 0);
       const rangeRule = rules.find((rule) => rule.id === 1);
 
+      // Update bands within the scenearios
       if (catRule.state && rangeRule.state) {
         fatEdited2Doc.bands.forEach((band) => {
           if (

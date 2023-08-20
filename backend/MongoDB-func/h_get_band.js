@@ -1,3 +1,4 @@
+//HTTPS Endpoint function to get band
 // This function is the endpoint's request handler.
 exports = async function ({ query, headers, body }, response) {
   // Data can be extracted from the request as follows:
@@ -5,14 +6,11 @@ exports = async function ({ query, headers, body }, response) {
   // Query params, e.g. '?arg1=hello&arg2=world' => {arg1: "hello", arg2: "world"}
   const { id, cat } = query;
 
-  // Headers, e.g. {"Content-Type": ["application/json"]}
-  const contentTypes = headers["Content-Type"];
-
   // Querying a mongodb service:
   const doc = context.services
     .get("mongodb-atlas")
-    .db("DSM")
-    .collection("fat_edited");
+    .db("DSM2")
+    .collection("fat_edited2");
 
   // Build the aggregation pipeline for filtering bands based on the provided "id"
   let aggregationPipeline = [];
