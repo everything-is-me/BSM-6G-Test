@@ -1,45 +1,22 @@
-# Chainlink NodeJS External Adapter Template
+# Note: Readme edited by @davidcuellard
 
-This template provides a basic framework for developing Chainlink external adapters in NodeJS. Comments are included to assist with development and testing of the external adapter. Once the API-specific values (like query parameters and API key authentication) have been added to the adapter, it is very easy to add some tests to verify that the data will be correctly formatted when returned to the Chainlink node. There is no need to use any additional frameworks or to run a Chainlink node in order to test the adapter.
+The README has been revised to suit project requirements. The Chainlink NodeJS External Adapter Template is accessible at the following GitHub repository: https://github.com/thodges-gh/CL-EA-NodeJS-Template.git.
 
-## Creating your own adapter from this template
-
-Clone this repo and change "ExternalAdapterProject" below to the name of your project
+## Enter into the ExternalAdapter directory
 
 ```bash
-git clone https://github.com/thodges-gh/CL-EA-NodeJS-Template.git ExternalAdapterProject
+cd ExternalAdapter
 ```
 
-Enter into the newly-created directory
 
+## Add enviornment variables
 ```bash
-cd ExternalAdapterProject
+touch .env
 ```
 
-You can remove the existing git history by running:
-
-```bash
-rm -rf .git
+Open the .env file and add the API_KEY
 ```
-
-See [Install Locally](#install-locally) for a quickstart
-
-## Input Params
-
-- `base`, `from`, or `coin`: The symbol of the currency to query
-- `quote`, `to`, or `market`: The symbol of the currency to convert to
-
-## Output
-
-```json
-{
- "jobRunID": "278c97ffadb54a5bbb93cfec5f7b5503",
- "data": {
-  "USD": 164.02,
-  "result": 164.02
- },
- "statusCode": 200
-}
+API_KEY = "API_KEY"
 ```
 
 ## Install Locally
@@ -50,14 +27,6 @@ Install dependencies:
 yarn
 ```
 
-### Test
-
-Run the local tests:
-
-```bash
-yarn test
-```
-
 Natively run the application (defaults to port 8080):
 
 ### Run
@@ -66,92 +35,34 @@ Natively run the application (defaults to port 8080):
 yarn start
 ```
 
+###
+
 ## Call the external adapter/API server
 
 ```bash
-curl -X POST -H "content-type:application/json" "http://localhost:8080/" --data '{ "id": 0, "data": { "from": "ETH", "to": "USD" } }'
+curl -X POST -H "content-type:application/json" "http://localhost:8080/" --data '{ "id": 1, "data": { "id": "1", "endQuery": "spectrum_availability", "state": "null", "address": "null" } }'
 ```
 
 ## Docker
 
 If you wish to use Docker to run the adapter, you can build the image by running the following command:
 
-```bash
-docker build . -t external-adapter
-```
-
-Then run it with:
+Run in: http://localhost:6688/ 
 
 ```bash
-docker run -p 8080:8080 -it external-adapter:latest
+cd ~/chainlink-sepolia && docker run --platform linux/x86_64/v8 --name chainlink-4 -v ~/chainlink-sepolia:/chainlink -it -p 6688:6688 --add-host=host.docker.internal:host-gateway smartcontract/chainlink:2.0.0 node -config /chainlink/config.toml -secrets /chainlink/secrets.toml start -a /chainlink/.api
 ```
 
-## Serverless hosts
-
-After [installing locally](#install-locally):
-
-### Create the zip
+Run in: http://host.docker.internal:8080/ 
 
 ```bash
-zip -r external-adapter.zip .
+cd ~/chainlink-sepolia && docker run --platform linux/x86_64/v8 --name chainlink-5 -v ~/chainlink-sepolia:/chainlink -it --net=host --add-host=host.docker.internal:host-gateway smartcontract/chainlink:2.0.0 node -config /chainlink/config.toml -secrets /chainlink/secrets.toml start -a /chainlink/.api
 ```
 
-### Install to AWS Lambda
+## More information
 
-- In Lambda Functions, create function
-- On the Create function page:
-  - Give the function a name
-  - Use Node.js 12.x for the runtime
-  - Choose an existing role or create a new one
-  - Click Create Function
-- Under Function code, select "Upload a .zip file" from the Code entry type drop-down
-- Click Upload and select the `external-adapter.zip` file
-- Handler:
-    - index.handler for REST API Gateways
-    - index.handlerv2 for HTTP API Gateways
-- Add the environment variable (repeat for all environment variables):
-  - Key: API_KEY
-  - Value: Your_API_key
-- Save
+You can find more information about Building and Using External Adapters in: 
 
-#### To Set Up an API Gateway (HTTP API)
+- https://docs.chain.link/chainlink-nodes/external-adapters/external-adapters
 
-If using a HTTP API Gateway, Lambda's built-in Test will fail, but you will be able to externally call the function successfully.
-
-- Click Add Trigger
-- Select API Gateway in Trigger configuration
-- Under API, click Create an API
-- Choose HTTP API
-- Select the security for the API
-- Click Add
-
-#### To Set Up an API Gateway (REST API)
-
-If using a REST API Gateway, you will need to disable the Lambda proxy integration for Lambda-based adapter to function.
-
-- Click Add Trigger
-- Select API Gateway in Trigger configuration
-- Under API, click Create an API
-- Choose REST API
-- Select the security for the API
-- Click Add
-- Click the API Gateway trigger
-- Click the name of the trigger (this is a link, a new window opens)
-- Click Integration Request
-- Uncheck Use Lamba Proxy integration
-- Click OK on the two dialogs
-- Return to your function
-- Remove the API Gateway and Save
-- Click Add Trigger and use the same API Gateway
-- Select the deployment stage and security
-- Click Add
-
-### Install to GCP
-
-- In Functions, create a new function, choose to ZIP upload
-- Click Browse and select the `external-adapter.zip` file
-- Select a Storage Bucket to keep the zip in
-- Function to execute: gcpservice
-- Click More, Add variable (repeat for all environment variables)
-  - NAME: API_KEY
-  - VALUE: Your_API_key
+- https://blog.chain.link/build-and-use-external-adapters/
