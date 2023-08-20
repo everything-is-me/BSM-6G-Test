@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 You can install dependences:
 
 ```bash
-yarn 
+yarn install
 ```
 
 You can run:
