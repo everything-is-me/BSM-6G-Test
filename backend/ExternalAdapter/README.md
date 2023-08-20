@@ -60,7 +60,15 @@ Run in: http://host.docker.internal:8080/
 cd ~/chainlink-sepolia && docker run --platform linux/x86_64/v8 --name chainlink-5 -v ~/chainlink-sepolia:/chainlink -it --net=host --add-host=host.docker.internal:host-gateway smartcontract/chainlink:2.0.0 node -config /chainlink/config.toml -secrets /chainlink/secrets.toml start -a /chainlink/.api
 ```
 
-## More information about Chainlink External Adapters
+## Useful links about Chainlink Nodes and External Adapters
+
+You can find more information about Running a Chainlink Node:
+
+- https://docs.chain.link/chainlink-nodes/v1/running-a-chainlink-node
+
+You can find more information about Fullfiling Requests:
+
+- https://docs.chain.link/chainlink-nodes/v1/fulfilling-requests#requirements
 
 You can find more information about Building and Using External Adapters in:
 
