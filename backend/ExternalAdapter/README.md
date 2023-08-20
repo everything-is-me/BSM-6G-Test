@@ -1,6 +1,6 @@
-# Note: Original Readme edited
+# Useful information
 
-The README has been revised to suit project requirements. The Chainlink NodeJS External Adapter Template is accessible at the following GitHub repository: https://github.com/thodges-gh/CL-EA-NodeJS-Template.git.
+The README has been edited to suit project requirements. The Chainlink NodeJS External Adapter Template is accessible at the following GitHub repository: https://github.com/thodges-gh/CL-EA-NodeJS-Template.git.
 
 ## Enter into the ExternalAdapter directory
 

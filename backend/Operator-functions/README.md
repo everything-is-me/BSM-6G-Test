@@ -1,4 +1,4 @@
-# Useful Information for Operator-functions directory
+# Useful Information
 
 In this folder you can find the following functions
 
