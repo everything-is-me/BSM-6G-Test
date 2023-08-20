@@ -19,7 +19,7 @@ const DataDisplay = () => {
             border: "none",
             borderRadius: "2px",
             boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)",
-            width: "1140px",
+            width: "1340px",
             height: "480px",
           }}
           src="https://charts.mongodb.com/charts-blockchain-dsm-oqlvh/embed/charts?id=64d16c63-1eba-42b8-81a4-a45d6f33a5bb&maxDataAge=30&theme=light&autoRefresh=true"
