@@ -12,10 +12,10 @@ Author: David Felipe Cuellar Diaz
 
 1. Blockchain networks
 
-For the Oracle implementation and testing:
+- For the Oracle implementation and testing:
 
-- Chainlink
-- SepoilaETH
+  - Chainlink
+  - SepoilaETH
 
 For the Scalability implementation and testing:
 
