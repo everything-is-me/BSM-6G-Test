@@ -7,12 +7,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 You can install dependences:
 
 ```bash
-yarn install
+npm install
 ```
 
 You can run:
 
 ```bash
-yarn start
+npm start
 ```
 
