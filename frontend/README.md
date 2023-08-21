@@ -15,4 +15,3 @@ You can run:
 ```bash
 npm start
 ```
-
