@@ -8,26 +8,37 @@ MSc Data Science and Artificial Intelligence
 Individual Masters Project
 Author: David Felipe Cuellar Diaz
 
-### Tools used
+### Tools used (A-Z)
 
-- Solidity: smart contracts
-- MongoDB: Databases
-- Postman: Test databases
-- NodeJS: Chainlink external adapter
-- Chainlink Run a local node:
-  Docker and PostgreSQL: Run node in Docker container
-  Alchemy: As external service to Run Ethereum client
-- Metamask: Run contracts and transactions
-- ReactJS: App frontend
-- Netlify: Upload React App
-- Python: Data analysis
+1. Blockchain networks
 
-### Tokens:
+For the Oracle implementation and testing:
+• Chainlink
+• SepoilaETH
 
-- Oracle: Sepoila: ETH - LINK
-- Scalability: SOL
+For the Scalability implementation and testing:
+• Solana
 
-## Folder structure
+2. Databases
+   • MongoDB: Spectrum availability and regulators databases
+   • PostgreSQL: Save Chainlink node data
+   • Postman: Test MongoDB databases
+
+3. Development
+   • Alchemy: External service to Run Ethereum client for the Chainlink node
+   • Docker: Run Chainlink node in Docker container
+   • Metamask: Run transactions and contract interactions
+   • Netlify: Upload React App
+   • Node.js: Compile and deploy the Chainlink external adapter
+   • Python: Data analysis and visualization
+   • ReactJS: Create frontend app
+   • Remix: Compile and deploy smart contracts
+   • Solidity language: Create smart contracts
+
+4. Hardware setup
+   • MacBook Air M1 - 8 GB
+
+### Folder structure
 
     .
     ├── backend
