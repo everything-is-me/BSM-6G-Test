@@ -31,22 +31,23 @@ Author: David Felipe Cuellar Diaz
 
     .
     ├── backend
-    │   └── Data-Analysis
+    │   ├── Data-Analysis
     │   │   └── README.md
     │   │   └── ...
-    │   └── ExternalAdapter
+    │   ├── ExternalAdapter
     │   │   └── README.md
     │   │   └── ...
-    │   └── MongoDB-functions
+    │   ├── MongoDB-functions
     │   │   └── README.md
     │   │   └── ...
-    │   └── Operator-functions
+    │   ├── Operator-functions
     │   │   └── README.md
     │   │   └── ...
     │   └── smart_contracts
+    │       ├── README.md
     │       └── ...
     └── frontend
-        └── README.md
+        ├── README.md
         └── ...
 
 Every folder has its own README.md
