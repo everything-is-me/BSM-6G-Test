@@ -2,8 +2,7 @@
 
 ### Bournemouth University
 
-Department of Computing and Informatics
-
+Department of Computing and Informatics //
 Faculty of science & technology
 
 MSc Data Science and Artificial Intelligence
