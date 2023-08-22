@@ -17,31 +17,31 @@ Author: David Felipe Cuellar Diaz
   - Chainlink
   - SepoilaETH
 
-For the Scalability implementation and testing:
+- For the Scalability implementation and testing:
 
-- Solana
+  - Solana
 
 2. Databases
 
-- MongoDB: Spectrum availability and regulators databases
-- PostgreSQL: Save Chainlink node data
-- Postman: Test MongoDB databases
+  - MongoDB: Spectrum availability and regulators databases
+  - PostgreSQL: Save Chainlink node data
+  - Postman: Test MongoDB databases
 
 3. Development
 
-- Alchemy: External service to Run Ethereum client for the Chainlink node
-- Docker: Run Chainlink node in Docker container
-- Metamask: Run transactions and contract interactions
-- Netlify: Upload React App
-- Node.js: Compile and deploy the Chainlink external adapter
-- Python: Data analysis and visualization
-- ReactJS: Create frontend app
-- Remix: Compile and deploy smart contracts
-- Solidity language: Create smart contracts
+  - Alchemy: External service to Run Ethereum client for the Chainlink node
+  - Docker: Run Chainlink node in Docker container
+  - Metamask: Run transactions and contract interactions
+  - Netlify: Upload React App
+  - Node.js: Compile and deploy the Chainlink external adapter
+  - Python: Data analysis and visualization
+  - ReactJS: Create frontend app
+  - Remix: Compile and deploy smart contracts
+  - Solidity language: Create smart contracts
 
 4. Hardware setup
 
-- MacBook Air M1 - 8 GB
+  - MacBook Air M1 - 8 GB
 
 ### Folder structure
 
