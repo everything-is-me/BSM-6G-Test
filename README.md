@@ -55,22 +55,23 @@ Author: David Felipe Cuellar Diaz
     │   ├── Data-Analysis
     │   │   ├── Interoperability
     │   │   │   ├── data_analysis.ipynb
+    │   │   │   ├── files
+    │   │   │   │   └── ...
     │   │   │   └── get_data.py
     │   │   ├── README.md
     │   │   └── Scalability
     │   │       ├── data_analysis.ipynb
+    │   │       ├── files
+    │   │       │   └── ...
     │   │       └── get_data.ipynb
     │   ├── ExternalAdapter
-    │   │   ├── Dockerfile
     │   │   ├── README.md
-    │   │   ├── app.js
     │   │   ├── index.js
-    │   │   ├── package.json
-    │   │   ├── test
-    │   │   │   └── index_test.js
-    │   │   └── yarn.lock
+    │   │   └── ...
     │   ├── MongoDB-functions
     │   │   ├── README.md
+    │   │   ├── files
+    │   │   │   └── fatMapping_edited.json
     │   │   ├── h_get_band.js
     │   │   ├── h_to_list.js
     │   │   ├── h_to_purchase.js
@@ -84,24 +85,7 @@ Author: David Felipe Cuellar Diaz
     │       └── README.md
     └── frontend
         ├── README.md
-        ├── package.json
-        ├── public
-        │   ├── _redirects
-        │   ├── favicon.ico
-        │   ├── index.html
-        │   ├── logo192.png
-        │   ├── logo512.png
-        │   ├── manifest.json
-        │   └── robots.txt
-        └── src
-            ├── App.css
-            ├── App.js
-            ├── App.test.js
-            ├── DataDisplay.js
-            ├── index.css
-            ├── index.js
-            ├── logo.svg
-            ├── reportWebVitals.js
-            └── setupTests.js
+        └── ...
+      
 
 Every folder has its own README.md
