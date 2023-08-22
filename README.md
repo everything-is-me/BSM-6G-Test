@@ -49,59 +49,59 @@ Author: David Felipe Cuellar Diaz
 
 ### Folder structure
 
-  .
-  ├── README.md
-  ├── backend
-  │   ├── Data-Analysis
-  │   │   ├── Interoperability
-  │   │   │   ├── data_analysis.ipynb
-  │   │   │   └── get_data.py
-  │   │   ├── README.md
-  │   │   └── Scalability
-  │   │       ├── data_analysis.ipynb
-  │   │       └── get_data.ipynb
-  │   ├── ExternalAdapter
-  │   │   ├── Dockerfile
-  │   │   ├── README.md
-  │   │   ├── app.js
-  │   │   ├── index.js
-  │   │   ├── package.json
-  │   │   ├── test
-  │   │   │   └── index_test.js
-  │   │   └── yarn.lock
-  │   ├── MongoDB-functions
-  │   │   ├── README.md
-  │   │   ├── h_get_band.js
-  │   │   ├── h_to_list.js
-  │   │   ├── h_to_purchase.js
-  │   │   └── t_check_regulations.js
-  │   ├── Operator-functions
-  │   │   ├── EA-get_band.txt
-  │   │   ├── EA-list-purchase.txt
-  │   │   └── README.md
-  │   └── smart_contracts
-  │       ├── CLAPIConsumer.sol
-  │       └── README.md
-  └── frontend
-      ├── README.md
-      ├── package.json
-      ├── public
-      │   ├── _redirects
-      │   ├── favicon.ico
-      │   ├── index.html
-      │   ├── logo192.png
-      │   ├── logo512.png
-      │   ├── manifest.json
-      │   └── robots.txt
-      └── src
-          ├── App.css
-          ├── App.js
-          ├── App.test.js
-          ├── DataDisplay.js
-          ├── index.css
-          ├── index.js
-          ├── logo.svg
-          ├── reportWebVitals.js
-          └── setupTests.js
+    .
+    ├── README.md
+    ├── backend
+    │   ├── Data-Analysis
+    │   │   ├── Interoperability
+    │   │   │   ├── data_analysis.ipynb
+    │   │   │   └── get_data.py
+    │   │   ├── README.md
+    │   │   └── Scalability
+    │   │       ├── data_analysis.ipynb
+    │   │       └── get_data.ipynb
+    │   ├── ExternalAdapter
+    │   │   ├── Dockerfile
+    │   │   ├── README.md
+    │   │   ├── app.js
+    │   │   ├── index.js
+    │   │   ├── package.json
+    │   │   ├── test
+    │   │   │   └── index_test.js
+    │   │   └── yarn.lock
+    │   ├── MongoDB-functions
+    │   │   ├── README.md
+    │   │   ├── h_get_band.js
+    │   │   ├── h_to_list.js
+    │   │   ├── h_to_purchase.js
+    │   │   └── t_check_regulations.js
+    │   ├── Operator-functions
+    │   │   ├── EA-get_band.txt
+    │   │   ├── EA-list-purchase.txt
+    │   │   └── README.md
+    │   └── smart_contracts
+    │       ├── CLAPIConsumer.sol
+    │       └── README.md
+    └── frontend
+        ├── README.md
+        ├── package.json
+        ├── public
+        │   ├── _redirects
+        │   ├── favicon.ico
+        │   ├── index.html
+        │   ├── logo192.png
+        │   ├── logo512.png
+        │   ├── manifest.json
+        │   └── robots.txt
+        └── src
+            ├── App.css
+            ├── App.js
+            ├── App.test.js
+            ├── DataDisplay.js
+            ├── index.css
+            ├── index.js
+            ├── logo.svg
+            ├── reportWebVitals.js
+            └── setupTests.js
 
 Every folder has its own README.md
