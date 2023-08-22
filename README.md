@@ -3,9 +3,13 @@
 ### Bournemouth University
 
 Department of Computing and Informatics
+
 Faculty of science & technology
+
 MSc Data Science and Artificial Intelligence
+
 Individual Masters Project
+
 Author: David Felipe Cuellar Diaz
 
 ### Tools used (A-Z)
@@ -37,7 +41,7 @@ Author: David Felipe Cuellar Diaz
   - Python: Data analysis and visualization
   - ReactJS: Create frontend app
   - Remix: Compile and deploy smart contracts
-  - Solidity language: Create smart contracts
+  - Solidity: Create smart contracts
 
 4. Hardware setup
 
