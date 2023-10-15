@@ -6,13 +6,13 @@ import "./SmartContract.css";
 const ethers = require("ethers");
 
 function SmartContract() {
-  const [web3, setWeb3] = useState(null);
+  //const [web3, setWeb3] = useState(null);
   const [account, setAccount] = useState(null);
   const [contract, setContract] = useState(null);
   const [msgCat, setMsgCat] = useState("");
-  const [authorizedListers, setAuthorizedListers] = useState([]);
-  const [authorizedPurchasers, setAuthorizedPurchasers] = useState([]);
-  const [newAuthorizedAddress, setNewAuthorizedAddress] = useState("");
+  //const [authorizedListers, setAuthorizedListers] = useState([]);
+  //const [authorizedPurchasers, setAuthorizedPurchasers] = useState([]);
+  //const [newAuthorizedAddress, setNewAuthorizedAddress] = useState("");
   const [connected, setConnected] = useState(false);
   const [bandId, setBandId] = useState("");
   const [state, setState] = useState("");
@@ -22,7 +22,7 @@ function SmartContract() {
       try {
         const web3Instance = new Web3(window.ethereum);
         const accounts = await web3Instance.eth.getAccounts();
-        setWeb3(web3Instance);
+        //setWeb3(web3Instance);
         setAccount(accounts[0]);
         setConnected(true);
         const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -56,7 +56,7 @@ function SmartContract() {
     setConnected(false);
   }
 
-  async function removeAuthorized() {
+  /* async function removeAuthorized() {
     if (contract && newAuthorizedAddress) {
       try {
         await contract.removeAuthorized([newAuthorizedAddress]);
@@ -67,9 +67,9 @@ function SmartContract() {
         console.error("Error removing authorized address:", error);
       }
     }
-  }
+  } */
 
-  async function setAuthorized() {
+  /* async function setAuthorized() {
     if (contract && newAuthorizedAddress) {
       try {
         await contract.setAuthorized([newAuthorizedAddress]);
@@ -80,7 +80,7 @@ function SmartContract() {
         console.error("Error setting authorized address:", error);
       }
     }
-  }
+  } */
 
   async function getMessages() {
     if (contract) {
@@ -93,7 +93,7 @@ function SmartContract() {
     }
   }
 
-  async function getAuthorizedUsers() {
+  /* async function getAuthorizedUsers() {
     if (contract) {
       try {
         const listerCount = await contract.authorizedListersCount();
@@ -117,7 +117,7 @@ function SmartContract() {
         console.error("Error getting authorized users:", error);
       }
     }
-  }
+  } */
 
   async function requestCat() {
     if (contract && bandId !== "") {
@@ -131,7 +131,7 @@ function SmartContract() {
     }
   }
 
-  async function requestListing() {
+  /* async function requestListing() {
     if (contract && bandId !== "" && state !== "") {
       try {
         const tx = await contract.requestListing(Number(bandId), Number(state));
@@ -141,7 +141,7 @@ function SmartContract() {
         console.error("Error sending listing request:", error);
       }
     }
-  }
+  } */
 
   return (
     <div className="container">
