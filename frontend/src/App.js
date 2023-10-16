@@ -1,12 +1,12 @@
 import "./App.css";
 import DataDisplay from "./DataDisplay";
-// import SmartContract from "./components/SmartContract";
+import SmartContract from "./components/SmartContract";
 
 function App() {
   return (
     <div className="App">
       <DataDisplay />
-      {/* <SmartContract /> */}
+      <SmartContract />
     </div>
   );
 }
