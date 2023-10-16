@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <DataDisplay />
-      <SmartContract />
+      {/* <SmartContract /> */}
     </div>
   );
 }
