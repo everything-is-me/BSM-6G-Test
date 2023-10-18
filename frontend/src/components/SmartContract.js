@@ -75,6 +75,7 @@ function SmartContract() {
 
   return (
     <div className="container">
+      <h1>Interact</h1>
       <div>User Account: {account}</div>
       {connected ? (
         <div>
@@ -87,12 +88,6 @@ function SmartContract() {
               placeholder="Band ID"
               value={bandId}
               onChange={(e) => setBandId(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="State"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
             />
             <button className="action-btn" onClick={requestCat}>
               Request Cat
