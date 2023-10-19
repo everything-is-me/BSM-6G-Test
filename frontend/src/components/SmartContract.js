@@ -11,7 +11,6 @@ function SmartContract() {
   const [msgCat, setMsgCat] = useState("");
   const [connected, setConnected] = useState(false);
   const [bandId, setBandId] = useState("");
-  const [state, setState] = useState("");
 
   async function initializeWeb3() {
     if (window.ethereum) {
@@ -20,10 +19,13 @@ function SmartContract() {
         const accounts = await web3Instance.eth.getAccounts();
         setAccount(accounts[0]);
         setConnected(true);
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const provider = new ethers.providers.Web3Provider(
+          window.ethereum || window.web3.currentProvider
+        );
+
         const signer = provider.getSigner();
         const contractInstance = new ethers.Contract(
-          "0x902261248155B62a06395479ecB0807768e458db", // Replace with your contract's address
+          "0x902261248155B62a06395479ecB0807768e458db",
           contractAbi,
           signer
         );
@@ -67,8 +69,10 @@ function SmartContract() {
         const tx = await contract.requestCat(Number(bandId));
         await tx.wait();
         console.log("Cat request successful!");
+        setMsgCat("Cat request successful!");
       } catch (error) {
         console.error("Error sending cat request:", error);
+        setMsgCat("Error sending cat request: " + error);
       }
     }
   }
