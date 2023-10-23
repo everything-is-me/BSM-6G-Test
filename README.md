@@ -1,4 +1,4 @@
-# Blockchain-based Dynamic Spectrum Management
+# BSM-6G: Blockchain-based Dynamic Spectrum Management for 6G Networks: Addressing Interoperability and Scalability
 
 ### Bournemouth University
 
@@ -6,11 +6,9 @@ Department of Computing and Informatics
 
 Faculty of science & technology
 
-MSc Data Science and Artificial Intelligence
+Authors: DAVID CUELLAR & MUNTADHER SALLAL
 
-Individual Masters Project
-
-Author: David Felipe Cuellar Diaz
+DOI: 
 
 ### Tools used (A-Z)
 
@@ -89,3 +87,7 @@ Author: David Felipe Cuellar Diaz
       
 
 Every folder has its own README.md
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
