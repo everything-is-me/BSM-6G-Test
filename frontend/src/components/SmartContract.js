@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Web3 from "web3";
 import contractAbi from "../config/contractABI.json"; // Replace with your contract's ABI
-import "./SmartContract.css";
 
 const ethers = require("ethers");
 
