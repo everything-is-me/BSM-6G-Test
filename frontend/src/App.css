@@ -36,3 +36,84 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 10px 100px;
+}
+
+.title1{
+  margin-top: 40px;
+}
+
+h2{
+  margin: 5px 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #6f6f6f;
+  cursor: no-drop;
+}
+
+input {
+  padding: 10px;
+  margin: 5px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+/* Style for Authorized Users list */
+.authorized-users {
+  margin-top: 20px;
+}
+
+.authorized-users div {
+  margin-bottom: 5px;
+}
+
+.authorized-users strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Style for Message Cat */
+.message-cat {
+  margin-top: 20px;
+}
+
+/* Style for Connect Wallet button */
+.connect-wallet-btn {
+  margin-top: 20px;
+}

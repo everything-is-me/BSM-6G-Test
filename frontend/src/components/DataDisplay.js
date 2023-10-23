@@ -3,7 +3,9 @@ import React from "react";
 const DataDisplay = () => {
   return (
     <div>
-      <h1>Spectrum Availability Information for Users</h1>
+      <h1>
+        Data charts
+      </h1>
       <div
         style={{
           display: "flex",

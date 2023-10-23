@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Web3 from "web3";
 import contractAbi from "../config/contractABI.json"; // Replace with your contract's ABI
 import "./SmartContract.css";
@@ -11,6 +11,14 @@ function SmartContract() {
   const [msgCat, setMsgCat] = useState("");
   const [connected, setConnected] = useState(false);
   const [bandId, setBandId] = useState("");
+  const [bandIdListing, setBandIdListing] = useState("");
+  const [stateListing, setStateListing] = useState("");
+  const [bandIdPurchasing, setBandIdPurchasing] = useState("");
+  const [statePurchasing, setStatePurchasing] = useState("");
+  const [metaAnswer, setMetaAnswer] = useState(null);
+  const [isAuthorizedListerAns, setIsAuthorizedListerAns] = useState(false);
+  const [isAuthorizedPurchaserAns, setIsAuthorizedPurchaserAns] =
+    useState(false);
 
   async function initializeWeb3() {
     if (window.ethereum) {
@@ -38,10 +46,6 @@ function SmartContract() {
     }
   }
 
-  useEffect(() => {
-    initializeWeb3();
-  }, []);
-
   async function connectWallet() {
     await initializeWeb3();
   }
@@ -55,10 +59,11 @@ function SmartContract() {
   async function getMessages() {
     if (contract) {
       try {
-        const messageCat = await contract.message();
-        setMsgCat(messageCat);
+        //const messageCat = await contract.message();
+        setMsgCat("Error: Operator not connected");
       } catch (error) {
         console.error("Error getting messages:", error);
+        setMsgCat("Error getting messages:", error);
       }
     }
   }
@@ -69,20 +74,41 @@ function SmartContract() {
         const tx = await contract.requestCat(Number(bandId));
         await tx.wait();
         console.log("Cat request successful!");
-        setMsgCat("Cat request successful!");
+        setMetaAnswer("Cat request successful!");
       } catch (error) {
         console.error("Error sending cat request:", error);
-        setMsgCat("Error sending cat request: " + error);
+        setMetaAnswer("Error sending cat request: " + error);
       }
     }
   }
 
+  const isAuthorizedUser = useCallback(async () => {
+    if (contract) {
+      try {
+        const lister = await contract.isAuthorizedLister(account);
+        const purchaser = await contract.isAuthorizedPurchaser(account);
+        setIsAuthorizedListerAns(lister);
+        setIsAuthorizedPurchaserAns(purchaser);
+      } catch (error) {
+        console.error("Error getting messages:", error);
+        setIsAuthorizedListerAns(false);
+        setIsAuthorizedPurchaserAns(false);
+      }
+    }
+  }, [contract, account]);
+
+  useEffect(() => {
+    isAuthorizedUser();
+  }, [connected, isAuthorizedUser]);
+
   return (
     <div className="container">
-      <h1>Interact</h1>
-      <div>User Account: {account}</div>
-      {connected ? (
+      <h1>Wallet Interaction</h1>
+      {connected && account != null ? (
         <div>
+          <div>User Account: {account}</div>
+          <div>Is Authorized Lister: {String(isAuthorizedListerAns)}</div>
+          <div>Is Authorized Purchaser: {String(isAuthorizedPurchaserAns)}</div>
           <button className="disconnect-btn" onClick={disconnectWallet}>
             Disconnect Wallet
           </button>
@@ -97,45 +123,53 @@ function SmartContract() {
               Request Cat
             </button>
           </div>
+
+          <div className="button-group">
+            <input
+              type="text"
+              placeholder="Band ID"
+              value={bandIdListing}
+              onChange={(e) => setBandIdListing(e.target.value)}
+              disabled={!isAuthorizedListerAns}
+            />
+            <input
+              type="text"
+              placeholder="State"
+              value={stateListing}
+              onChange={(e) => setStateListing(e.target.value)}
+              disabled={!isAuthorizedListerAns}
+            />
+            <button className="action-btn" disabled={!isAuthorizedListerAns}>
+              Request Listing
+            </button>
+          </div>
+
+          <div className="button-group">
+            <input
+              type="text"
+              placeholder="Band ID"
+              value={bandIdPurchasing}
+              onChange={(e) => setBandIdPurchasing(e.target.value)}
+              disabled={!isAuthorizedPurchaserAns}
+            />
+            <input
+              type="text"
+              placeholder="State"
+              value={statePurchasing}
+              onChange={(e) => setStatePurchasing(e.target.value)}
+              disabled={!isAuthorizedPurchaserAns}
+            />
+            <button className="action-btn" disabled={!isAuthorizedPurchaserAns}>
+              Request Purchasing
+            </button>
+          </div>
+          {metaAnswer != null ? <div>Metamask answer: {metaAnswer}</div> : null}
           <div className="message-cat">
             <button className="action-btn" onClick={getMessages}>
               Get Messages
             </button>
-            <div>Message Cat: {msgCat}</div>
+            <div>Message: {msgCat} </div>
           </div>
-
-          {/* <div className="authorized-users">
-            <strong>Authorized Users:</strong>
-            <div>
-              {authorizedListers.map((address, index) => (
-                <div key={index}>
-                  Authorized Lister {index + 1}: {address}
-                </div>
-              ))}
-            </div>
-            <div>
-              {authorizedPurchasers.map((address, index) => (
-                <div key={index}>
-                  Authorized Purchaser {index + 1}: {address}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="action-group">
-            <input
-              type="text"
-              placeholder="Enter address"
-              value={newAuthorizedAddress}
-              onChange={(e) => setNewAuthorizedAddress(e.target.value)}
-            />
-            <button className="action-btn" onClick={removeAuthorized}>
-              Remove Authorized
-            </button>
-            <button className="action-btn" onClick={setAuthorized}>
-              Set Authorized
-            </button>
-          </div> */}
         </div>
       ) : (
         <button className="connect-wallet-btn" onClick={connectWallet}>
