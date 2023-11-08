@@ -86,7 +86,7 @@ DOI:
         └── ...
       
 
-Every folder has its own README.md
+Each folder has its own README.md
 
 
 ## License
