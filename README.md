@@ -3,12 +3,10 @@
 ### Bournemouth University
 
 Department of Computing and Informatics
-
 Faculty of science & technology
-
 Authors: DAVID CUELLAR & MUNTADHER SALLAL
-
-DOI: 
+DOI: 10.1109/ACCESS.2024.3393288
+link: https://ieeexplore.ieee.org/document/10507790
 
 ### Tools used (A-Z)
 
@@ -87,7 +85,6 @@ DOI:
       
 
 Each folder has its own README.md
-
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
